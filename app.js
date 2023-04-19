@@ -1,5 +1,6 @@
 const express =require("express");
 const bodyParser = require("body-parser");
+const errorMiddleware =require("./middleware/error");
 const cookieParser=require("cookie-parser");
 const path = require("path")
 const dotenv=require("dotenv");
@@ -12,8 +13,10 @@ app.use(cookieParser());
 app.use(express.urlencoded({limit:"50mb",extended:true}));
 app.use(bodyParser.urlencoded({extended:true}));
 
-const user=require("./routes/routes")
-app.use("/api/v1", user);
+const userAndUrlRoutes=require("./routes/routes")
+app.use("/api/v1", userAndUrlRoutes);
+
+app.use(errorMiddleware);
 
 module.exports = app
 
