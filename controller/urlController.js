@@ -6,7 +6,8 @@ const validUrl = require('valid-url')
 const shortid = require('shortid')
 
 exports.urlShortener=catchAsyncerrors(async(req,res,next)=>{
-    const baseUrl = 'http:localhost:4000/api/v1'
+    const baseUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+    console.log(baseUrl)
     const {
         longUrl
     } = req.body
