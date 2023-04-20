@@ -16,7 +16,7 @@ const rateLimiter = rateLimit({
 
 
 router.route("/user/register").post(registerUser); // register user
-router.route("user/login").post(loginUser); // login user
+router.route("/user/login").post(loginUser); // login user
 router.get("/logout",logout);//logout user
 
 

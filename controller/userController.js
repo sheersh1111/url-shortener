@@ -23,7 +23,6 @@ exports.registerUser = catchAsyncerrors(async (req, res, next) => {
 exports.loginUser = async(req, res,next) => {
   const { email, password } = req.body;
   //checking if user has given password and email both
-  console.log(email, password)
   if (!email || !password) {
       return next(new ErrorHandler("Please enter email & Password", 400));
   }
@@ -33,7 +32,6 @@ exports.loginUser = async(req, res,next) => {
  const user=  await User.findOne({ email: req.body.email })
       if (user) {
           const isPasswordMatched = await user.authenticate(req.body.password);
-          console.log(isPasswordMatched);
           if (!isPasswordMatched) {
               return next(new ErrorHandler("Invalid Emailid or Password", 401));
           }
