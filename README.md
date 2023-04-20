@@ -33,12 +33,19 @@ npm run dev
  Also storing password in a hashed form, by passing bcrypt library function in user defined database method,
  as you wil see once you navigate to /model/userModel.js file.
  
+ 
 # Authorization: Protected routes for access to resources.
   For , this feature, in /middleware/auth.js I have provided function isAuthenticatedUser ,acts as a middleware for protected route in routes/routes.js(functions in this file). 
 #URL Shortening API:
   Route for this API is in routes/routes.js
   and Function is in urlController.
   
+# Rate Limiting:
+ I have directly used that in routes.js file as only one endpoint was to be limited.
+ I have installed express-rate-limit package for that, 
+ initialized the rateLimiter values for desired 10 calls per hour for shorten post request.
+ added the function as a middleware in /shorten api request.
+ 
 # Error Handling:
   In file /utils/errorHandler.js function extends to Error and uses Error.captureStackTrace and then passed to middleware/error.js file as a constructor.
   This way , inbuilt and both user raised error can be handled.
