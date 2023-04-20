@@ -16,6 +16,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 const userAndUrlRoutes=require("./routes/routes")
 app.use("/api/v1", userAndUrlRoutes);
 
+app.get("/",(req,res)=>{
+    res.send("Welcome to Url-Shortener")
+})
 app.use(errorMiddleware);
 
 module.exports = app
